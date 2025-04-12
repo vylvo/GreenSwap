@@ -603,5 +603,10 @@ namespace GreenSwap
         {
             _context.Dispose();
         }
+
+        private void cmbUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

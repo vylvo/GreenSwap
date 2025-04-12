@@ -8,21 +8,21 @@ namespace GreenSwap.Models
         public int InfoID { get; set; }
 
         [Required]
-        public string PlantTypeName { get; set; }
+        public string PlantTypeName { get; set; } = string.Empty;
 
         [Required]
-        public string WateringFrequency { get; set; }
+        public string WateringFrequency { get; set; } = string.Empty;
 
         [Required]
-        public string LightRequirements { get; set; }
+        public string LightRequirements { get; set; } = string.Empty;
 
-        public string SoilPreferences { get; set; }
+        public string? SoilPreferences { get; set; }
 
         [Required]
         public int DifficultyLevel { get; set; }
 
-        public string GrowthHabits { get; set; }
+        public string? GrowthHabits { get; set; }
 
-        public string CommonIssues { get; set; }
+        public string? CommonIssues { get; set; }
     }
 }
