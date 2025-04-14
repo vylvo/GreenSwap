@@ -134,11 +134,11 @@ HAVING CompletedTrades > 0
 ORDER BY CompletedTrades DESC;
 
 Screenshots
-![Main Form](screenshots/main_form.png)
-![User Management](screenshots/user_management.png)
-![Plant Management](screenshots/plant_management.png)
-![Trade Management](screenshots/trade_management.png)
-![Plant Care Info](screenshots/plant_care_info.png)
+![Main Form](./GreenSwap/screenshots/main_form.png)
+![User Management](./GreenSwap/screenshots/user_management.png)
+![Plant Management](./GreenSwap/screenshots/plant_management.png)
+![Trade Management](./GreenSwap/screenshots/trade_management.png)
+![Plant Care Info](./GreenSwap/screenshots/plant_care_info.png)
 
 License
 This project is created for educational purposes as part of CS665 coursework.
