@@ -40,12 +40,12 @@ namespace GreenSwap
                 dgvPlantCare.Rows.Clear();
 
                 // Get all plant care info from database
-                var plantCareInfos = _context.PlantCareInfos
+                var plantCareInfo = _context.PlantCareInfo
                     .OrderBy(p => p.PlantTypeName)
                     .ToList();
 
                 // Add plant care info to DataGridView
-                foreach (var info in plantCareInfos)
+                foreach (var info in plantCareInfo)
                 {
                     dgvPlantCare.Rows.Add(
                         info.InfoID,
@@ -102,7 +102,7 @@ namespace GreenSwap
                 }
 
                 // Check if plant type already exists
-                if (_context.PlantCareInfos.Any(p => p.PlantTypeName == txtPlantType.Text))
+                if (_context.PlantCareInfo.Any(p => p.PlantTypeName == txtPlantType.Text))
                 {
                     MessageBox.Show("Plant type already exists.", "Validation Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -122,7 +122,7 @@ namespace GreenSwap
                 };
 
                 // Add to database
-                _context.PlantCareInfos.Add(plantCareInfo);
+                _context.PlantCareInfo.Add(plantCareInfo);
                 _context.SaveChanges();
 
                 // Refresh the list
@@ -167,7 +167,7 @@ namespace GreenSwap
                 int infoId = int.Parse(txtInfoID.Text);
 
                 // Find plant care info
-                var plantCareInfo = _context.PlantCareInfos.Find(infoId);
+                var plantCareInfo = _context.PlantCareInfo.Find(infoId);
                 if (plantCareInfo == null)
                 {
                     MessageBox.Show("Plant care information not found.", "Error",
@@ -176,7 +176,7 @@ namespace GreenSwap
                 }
 
                 // Check if plant type already exists for other info
-                if (_context.PlantCareInfos.Any(p => p.PlantTypeName == txtPlantType.Text && p.InfoID != infoId))
+                if (_context.PlantCareInfo.Any(p => p.PlantTypeName == txtPlantType.Text && p.InfoID != infoId))
                 {
                     MessageBox.Show("Plant type already exists.", "Validation Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -235,7 +235,7 @@ namespace GreenSwap
                 }
 
                 // Find plant care info
-                var plantCareInfo = _context.PlantCareInfos.Find(infoId);
+                var plantCareInfo = _context.PlantCareInfo.Find(infoId);
                 if (plantCareInfo == null)
                 {
                     MessageBox.Show("Plant care information not found.", "Error",
@@ -244,7 +244,7 @@ namespace GreenSwap
                 }
 
                 // Delete plant care info
-                _context.PlantCareInfos.Remove(plantCareInfo);
+                _context.PlantCareInfo.Remove(plantCareInfo);
                 _context.SaveChanges();
 
                 // Refresh the list
@@ -291,7 +291,7 @@ namespace GreenSwap
                 dgvPlantCare.Rows.Clear();
 
                 // Execute a query to find the easiest plants (difficulty level 1-2)
-                var easyPlants = _context.PlantCareInfos
+                var easyPlants = _context.PlantCareInfo
                     .Where(p => p.DifficultyLevel <= 2)
                     .OrderBy(p => p.DifficultyLevel)
                     .ThenBy(p => p.PlantTypeName)
@@ -338,7 +338,7 @@ namespace GreenSwap
                 dgvPlantCare.Rows.Clear();
 
                 // Execute a query to find the hardest plants (difficulty level 4-5)
-                var hardPlants = _context.PlantCareInfos
+                var hardPlants = _context.PlantCareInfo
                     .Where(p => p.DifficultyLevel >= 4)
                     .OrderByDescending(p => p.DifficultyLevel)
                     .ThenBy(p => p.PlantTypeName)
@@ -385,7 +385,7 @@ namespace GreenSwap
                 dgvPlantCare.Rows.Clear();
 
                 // Execute a complex join query to find the most popular plant types based on trade count
-                var popularTypes = _context.PlantCareInfos
+                var popularTypes = _context.PlantCareInfo
                     .Join(
                         _context.Plants.GroupBy(p => p.PlantType)
                             .Select(g => new { PlantType = g.Key, Count = g.Count() }),

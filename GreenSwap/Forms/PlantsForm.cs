@@ -124,7 +124,7 @@ namespace GreenSwap
                     .ToList();
 
                 // Add plant types from PlantCareInfo table
-                var careInfoTypes = _context.PlantCareInfos
+                var careInfoTypes = _context.PlantCareInfo
                     .Select(pci => pci.PlantTypeName)
                     .Distinct()
                     .OrderBy(pt => pt)
@@ -562,7 +562,7 @@ namespace GreenSwap
             }
 
             // Try to find care info for the selected plant type
-            var careInfo = _context.PlantCareInfos
+            var careInfo = _context.PlantCareInfo
                 .FirstOrDefault(pci => pci.PlantTypeName == cmbPlantType.Text);
 
             if (careInfo == null)

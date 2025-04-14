@@ -11,7 +11,7 @@ namespace GreenSwap
         public DbSet<User> Users { get; set; }
         public DbSet<Plant> Plants { get; set; }
         public DbSet<Trade> Trades { get; set; }
-        public DbSet<PlantCareInfo> PlantCareInfos { get; set; }
+        public DbSet<PlantCareInfo> PlantCareInfo { get; set; }
 
         // The database file path
         private string DbPath { get; }

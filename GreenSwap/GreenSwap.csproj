@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="greenswap.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="greenswap.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bogus" Version="35.6.2" />
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
