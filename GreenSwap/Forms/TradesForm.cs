@@ -13,7 +13,6 @@ namespace GreenSwap
     public partial class TradesForm : MaterialForm
     {
         private readonly GreenSwapDbContext _context;
-        private readonly MaterialSkinManager materialSkinManager;
         private Dictionary<string, int> userDictionary = new Dictionary<string, int>();
         private Dictionary<string, int> plantDictionary = new Dictionary<string, int>();
         private bool initialLoad = true;
@@ -21,19 +20,7 @@ namespace GreenSwap
         public TradesForm()
         {
             InitializeComponent();
-
-            // Initialize Material Skin with "Little Plants" color scheme
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.Green800,  // Primary color (darker green)
-                Primary.Green900,  // Dark Primary color
-                Primary.Green500,  // Light Primary color
-                Accent.Lime200,    // Accent color (light lime)
-                TextShade.WHITE    // Text color
-            );
+            ThemeHelper.ApplyTheme(this);
 
             // Initialize database context
             _context = new GreenSwapDbContext();

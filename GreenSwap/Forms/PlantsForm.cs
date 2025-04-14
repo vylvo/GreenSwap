@@ -12,24 +12,11 @@ namespace GreenSwap
     public partial class PlantsForm : MaterialForm
     {
         private readonly GreenSwapDbContext _context;
-        private readonly MaterialSkinManager materialSkinManager;
 
         public PlantsForm()
         {
             InitializeComponent();
-
-            // Initialize Material Skin
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.Green800,
-                Primary.Green900,
-                Primary.Green500,
-                Accent.LightGreen200,
-                TextShade.WHITE
-            );
+            ThemeHelper.ApplyTheme(this);
 
             // Initialize database context
             _context = new GreenSwapDbContext();
